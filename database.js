@@ -26,3 +26,5 @@ if (row === undefined) {
 
 //export all of the above as a module to use elsewhere
 module.exports = db;
+
+//w08 notes as guide
