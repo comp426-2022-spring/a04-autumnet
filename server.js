@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const db = require("./database.js")
+// added provided lines 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -9,15 +10,11 @@ const morgan = require('morgan')
 const fs = require('fs')
 
 const args = require("minimist")(process.argv.slice(2))
-// Define allowed argument name 'port'.
+// Define allowed argument names.
 args["port", "help", "debug", "log"]
 // Define a const `port` using the argument from the command line. 
-// Make this const default to port 3000 if there is no argument given for `--port`.
+// Make this const default to port 5555 if there is no argument given for `--port`.
 const port = args.port || process.env.PORT || 5555
-// Use the fs module to create an arrow function using `fs.readFile`.
-// Use the documentation for the Node.js `fs` module. 
-// The function must read a file located at `./www/index.html` and do some stuff with it.
-// The stuff that should be inside this function is all below.
 
 const help = (`
 server.js [options]
@@ -41,6 +38,7 @@ if (args.help || args.h) {
     process.exit(0)
 }
 
+// debug defaults to false, but if set to true, creates two endpoints to return log from database and throw an error test
 const debug = args.debug || false
 if (debug == true) {
   app.get('/app/log/access', (req, res) => {
@@ -52,6 +50,7 @@ if (debug == true) {
   });
 }
 
+// log defaults to true; if set to false, no log files are written
 const log = args.log || true
 
 // logging
