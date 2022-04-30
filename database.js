@@ -1,8 +1,10 @@
 const Database = require('better-sqlite3');
+//connect to database or create a new one
 const db = new Database('log.db');
 
-
+//start checking if database is initialized
 const stmt = db.prepare(`SELECT name FROM sqlite_master WHERE type='table' and name='accesslog';`)
+//define row with better sqlite get()
 let row = stmt.get();
 
 // init db
