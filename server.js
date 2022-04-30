@@ -58,7 +58,7 @@ if (log == true) {
   app.use(morgan('combined', { stream: accessLog }))
 }
 
-// Middleware
+// Middleware function to define database variables
 app.use((req, res, next) => {
 
   let logdata = {
@@ -80,7 +80,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
+//see a03 for function clarifications
 const server = app.listen(port,() => {
     console.log('App is running on port %PORT%'.replace('%PORT%',port))
 })
