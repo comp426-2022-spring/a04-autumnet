@@ -52,7 +52,6 @@ if (debug == true) {
 
 // log defaults to true; if set to false, no log files are written
 const log = args.log || true
-
 // logging
 if (log == true) {
   const accessLog = fs.createWriteStream('access.log', { flags: 'a' })
